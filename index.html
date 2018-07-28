@@ -83,7 +83,7 @@
 						sensordata.angular_x = value.getInt16(12, true);
 						sensordata.angular_y = value.getInt16(14, true);
 						sensordata.angular_z = value.getInt16(16, true);
-						sensordata.pressure = value.getInt16(18, true);
+						sensordata.pressure = (value.getInt16(18, true)+65536+50000)/100.0;
 
 						addData(sensordata);
 					});
@@ -160,42 +160,6 @@
 				x: moment(),
 				y: sensordata.pressure
 			});
-			config.data.datasets[1].data.push({
-				x: moment(),
-				y: sensordata.acceleration_x
-			});
-			config.data.datasets[2].data.push({
-				x: moment(),
-				y: sensordata.acceleration_y
-			});
-			config.data.datasets[3].data.push({
-				x: moment(),
-				y: sensordata.acceleration_z
-			});
-			config.data.datasets[4].data.push({
-				x: moment(),
-				y: sensordata.magnetism_x
-			});
-			config.data.datasets[5].data.push({
-				x: moment(),
-				y: sensordata.magnetism_y
-			});
-			config.data.datasets[6].data.push({
-				x: moment(),
-				y: sensordata.magnetism_z
-			});
-			config.data.datasets[7].data.push({
-				x: moment(),
-				y: sensordata.angular_x
-			});
-			config.data.datasets[8].data.push({
-				x: moment(),
-				y: sensordata.angular_y
-			});
-			config.data.datasets[9].data.push({
-				x: moment(),
-				y: sensordata.angular_z
-			});
 		}
 
 		let chartColors = {
@@ -220,93 +184,6 @@
 					pointBorderWidth: 0,
 					fill: false,
 					lineTension: 0,
-					data: []
-				}, {
-					label: 'ax',
-					backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-					borderColor: chartColors.red,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					cubicInterpolationMode: 'monotone',
-					data: []
-				}, {
-					label: 'ay',
-					backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-					borderColor: chartColors.red,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					borderDash: [8, 1],
-					cubicInterpolationMode: 'monotone',
-					data: []
-				}, {
-					label: 'az',
-					backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
-					borderColor: chartColors.red,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					borderDash: [8, 4],
-					cubicInterpolationMode: 'monotone',
-					data: []
-				}, {
-					label: 'jx',
-					backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-					borderColor: chartColors.green,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					cubicInterpolationMode: 'monotone',
-					data: []
-				}, {
-					label: 'jy',
-					borderDash: [8, 1],
-					backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-					borderColor: chartColors.green,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					cubicInterpolationMode: 'monotone',
-					data: []
-				}, {
-					label: 'jz',
-					backgroundColor: color(chartColors.green).alpha(0.5).rgbString(),
-					borderColor: chartColors.green,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					borderDash: [8, 4],
-					cubicInterpolationMode: 'monotone',
-					data: []
-				}, {
-					label: 'mx',
-					backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-					borderColor: chartColors.blue,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					cubicInterpolationMode: 'monotone',
-					data: []
-				}, {
-					label: 'my',
-					backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-					borderColor: chartColors.blue,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					borderDash: [8, 1],
-					cubicInterpolationMode: 'monotone',
-					data: []
-				}, {
-					label: 'mz',
-					backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
-					borderColor: chartColors.blue,
-					borderWidth: 1,
-					pointBorderWidth: 0,
-					fill: false,
-					borderDash: [8, 4],
-					cubicInterpolationMode: 'monotone',
 					data: []
 				}]
 			},
